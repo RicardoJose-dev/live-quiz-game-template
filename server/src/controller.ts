@@ -1,4 +1,4 @@
-import { registerUser } from "./services/registerUser"
+import { registerUser, createGame } from "./handlers/index"
 import { WSMessage } from "./types"
 
 export function processMessage(message: WSMessage) {
@@ -7,6 +7,8 @@ export function processMessage(message: WSMessage) {
   switch (type) {
     case "reg":
       return registerUser(message)
+    case "create_game":
+      return createGame(message)
     default:
       break
   }
