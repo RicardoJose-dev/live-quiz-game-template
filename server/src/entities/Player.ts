@@ -34,9 +34,10 @@ export class Player implements PlayerInterface {
       return this.score
     }
 
-    const timeBonusModifier =
-      (timeLimitSec * 1000) / (this.answerTime - questionStartTime)
-    this.score += Math.floor(timeBonusModifier * 100)
+    const playerTime = this.answerTime - questionStartTime
+    const timeRemaining = timeLimitSec * 1000 - playerTime
+
+    this.score += Math.floor(timeRemaining / timeLimitSec)
     return this.score
   }
 }
