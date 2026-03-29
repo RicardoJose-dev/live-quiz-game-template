@@ -114,7 +114,10 @@ export class Game implements GameInterface {
   setCurrentQuestionTimers(timeLimitSec: number) {
     this.clearQuestionTimer()
     this.questionTimer = setTimeout(
-      () => this.broadcastQuestionResults(),
+      () => {
+        this.broadcastQuestionResults()
+        this.broadcastNextQuestion()
+      },
       timeLimitSec * 1000
     )
     this.questionStartTime = Date.now()
