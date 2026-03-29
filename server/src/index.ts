@@ -20,7 +20,10 @@ wss.on("connection", function connection(ws) {
     } catch (err) {
       console.log(err)
       ws.send(
-        JSON.stringify({ type: "error", message: "An error has ocurred" })
+        JSON.stringify({
+          type: "error",
+          data: { message: "An error has ocurred" },
+        })
       )
     }
   })
@@ -30,6 +33,12 @@ wss.on("connection", function connection(ws) {
       processMessage(ws, { type: "remove_player", data: {}, id: 0 })
     } catch (err) {
       console.log(err)
+      ws.send(
+        JSON.stringify({
+          type: "error",
+          data: { message: "An error has ocurred" },
+        })
+      )
     }
   })
 })
