@@ -1,12 +1,30 @@
-import { registerUser } from "./services/registerUser"
-import { WSMessage } from "./types"
+import { WebSocket } from "ws"
+import {
+  registerUser,
+  createGame,
+  joinPlayerToGame,
+  startGame,
+  processPlayerAnswer,
+  removePlayer,
+} from "./handlers/index.js"
+import { WSMessage } from "./types.js"
 
-export function processMessage(message: WSMessage) {
+export function processMessage(ws: WebSocket, message: WSMessage) {
   const { type } = message
 
   switch (type) {
     case "reg":
-      return registerUser(message)
+      return registerUser(ws, message)
+    case "create_game":
+      return createGame(ws, message)
+    case "join_game":
+      return joinPlayerToGame(ws, message)
+    case "start_game":
+      return startGame(ws, message)
+    case "answer":
+      return processPlayerAnswer(ws, message)
+    case "remove_player":
+      return removePlayer(ws)
     default:
       break
   }
