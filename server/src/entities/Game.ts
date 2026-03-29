@@ -64,6 +64,13 @@ export class Game implements GameInterface {
     this.broadcastUpdatePlayers()
   }
 
+  removePlayerFromGame(toRemovePlayer: Player) {
+    this.players = this.players.filter(
+      (player) => player.name !== toRemovePlayer.name
+    )
+    this.broadcastUpdatePlayers()
+  }
+
   setPlayersAnswerData() {
     for (const player of this.players) {
       player.resetAnswerData()

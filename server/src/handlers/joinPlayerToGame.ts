@@ -8,7 +8,8 @@ export function joinPlayerToGame(ws: WebSocket, message: WSMessage) {
 
   const game = gameService.findGameByCode(String(code).toLowerCase())
   const player = playerService.getPlayer(ws)
-  game.addPlayerToGame(player)
+
+  gameService.addPlayerToGame(player, game)
 
   return {
     type: "game_joined",

@@ -5,6 +5,7 @@ import {
   joinPlayerToGame,
   startGame,
   processPlayerAnswer,
+  removePlayer,
 } from "./handlers/index"
 import { WSMessage } from "./types"
 
@@ -22,6 +23,8 @@ export function processMessage(ws: WebSocket, message: WSMessage) {
       return startGame(ws, message)
     case "answer":
       return processPlayerAnswer(ws, message)
+    case "remove_player":
+      return removePlayer(ws)
     default:
       break
   }

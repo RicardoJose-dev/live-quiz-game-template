@@ -24,4 +24,12 @@ wss.on("connection", function connection(ws) {
       )
     }
   })
+
+  ws.on("close", function () {
+    try {
+      processMessage(ws, { type: "remove_player", data: {}, id: 0 })
+    } catch (err) {
+      console.log(err)
+    }
+  })
 })

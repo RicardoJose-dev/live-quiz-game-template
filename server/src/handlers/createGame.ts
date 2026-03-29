@@ -13,7 +13,7 @@ export function createGame(ws: WebSocket, message: WSMessage) {
   gameService.registerGame(game)
 
   const player = playerService.getPlayer(ws)
-  game.addPlayerToGame(player)
+  gameService.addPlayerToGame(player, game)
 
   return {
     type: "game_created",

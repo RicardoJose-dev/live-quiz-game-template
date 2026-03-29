@@ -1,15 +1,17 @@
-import crypto from "crypto"
 import { Game } from "../entities/Game"
 import { CodeGenerator } from "./CodeGenerator"
 import { Question } from "../types"
+import { Player } from "../entities/Player"
 
 class GameService {
   gamesByCode: { [key: string]: Game }
   gamesById: { [key: string]: Game }
+  playersByGame: Map<Player, Game>
 
   constructor() {
     this.gamesByCode = {}
     this.gamesById = {}
+    this.playersByGame = new Map()
   }
 
   generateGame(id: string, questions: Question[]) {
@@ -41,6 +43,21 @@ class GameService {
     }
 
     return game
+  }
+
+  findGameByPlayer(player: Player) {
+    const game = this.playersByGame.get(player)
+
+    if (!game) {
+      throw new Error("Game not found")
+    }
+
+    return game
+  }
+
+  addPlayerToGame(player: Player, game: Game) {
+    this.playersByGame.set(player, game)
+    game.addPlayerToGame(player)
   }
 }
 
