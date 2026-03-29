@@ -1,6 +1,6 @@
 import { WebSocketServer } from "ws"
-import { processMessage } from "./controller"
-import { WSMessage } from "./types"
+import { processMessage } from "./controller.js"
+import { WSMessage } from "./types.js"
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 7001
 

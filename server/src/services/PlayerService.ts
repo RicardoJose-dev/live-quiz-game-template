@@ -1,6 +1,6 @@
 import type { WebSocket } from "ws"
-import { Player } from "../entities/Player"
-import { CodeGenerator } from "./CodeGenerator"
+import { Player } from "../entities/Player.js"
+import { CodeGenerator } from "./CodeGenerator.js"
 
 class PlayerService {
   players: Map<WebSocket, Player>

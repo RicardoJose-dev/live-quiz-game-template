@@ -1,6 +1,6 @@
 import { WebSocket } from "ws"
-import gameService from "../services/GameService"
-import playerService from "../services/PlayerService"
+import gameService from "../services/GameService.js"
+import playerService from "../services/PlayerService.js"
 
 export function removePlayer(ws: WebSocket) {
   const player = playerService.getPlayer(ws)

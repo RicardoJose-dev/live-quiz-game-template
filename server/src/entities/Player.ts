@@ -1,5 +1,5 @@
 import type { WebSocket } from "ws"
-import { Player as PlayerInterface } from "../types"
+import { Player as PlayerInterface } from "../types.js"
 
 export class Player implements PlayerInterface {
   name: string

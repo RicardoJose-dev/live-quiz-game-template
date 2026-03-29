@@ -1,7 +1,7 @@
-import { Game } from "../entities/Game"
-import { CodeGenerator } from "./CodeGenerator"
-import { Question } from "../types"
-import { Player } from "../entities/Player"
+import { Game } from "../entities/Game.js"
+import { CodeGenerator } from "./CodeGenerator.js"
+import { Question } from "../types.js"
+import { Player } from "../entities/Player.js"
 
 class GameService {
   gamesByCode: { [key: string]: Game }

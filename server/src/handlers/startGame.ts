@@ -1,6 +1,6 @@
 import { WebSocket } from "ws"
-import gameService from "../services/GameService"
-import { WSMessage } from "../types"
+import gameService from "../services/GameService.js"
+import { WSMessage } from "../types.js"
 
 export function startGame(ws: WebSocket, message: WSMessage) {
   const {

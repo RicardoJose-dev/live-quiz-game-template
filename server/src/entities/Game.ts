@@ -1,5 +1,5 @@
-import { Player } from "./Player"
-import { Game as GameInterface, Question } from "../types"
+import { Player } from "./Player.js"
+import { Game as GameInterface, Question } from "../types.js"
 
 const BROADCAST_DELAY = 3000
 

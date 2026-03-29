@@ -6,8 +6,8 @@ import {
   startGame,
   processPlayerAnswer,
   removePlayer,
-} from "./handlers/index"
-import { WSMessage } from "./types"
+} from "./handlers/index.js"
+import { WSMessage } from "./types.js"
 
 export function processMessage(ws: WebSocket, message: WSMessage) {
   const { type } = message

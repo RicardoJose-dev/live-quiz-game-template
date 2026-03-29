@@ -1,6 +1,6 @@
 import { WebSocket } from "ws"
-import playerService from "../services/PlayerService"
-import { WSMessage } from "../types"
+import playerService from "../services/PlayerService.js"
+import { WSMessage } from "../types.js"
 
 export function registerUser(ws: WebSocket, message: WSMessage) {
   const { name } = message.data
