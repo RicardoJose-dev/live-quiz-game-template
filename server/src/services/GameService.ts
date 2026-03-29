@@ -4,10 +4,12 @@ import { CodeGenerator } from "./CodeGenerator"
 import { Question } from "../types"
 
 class GameService {
-  games: { [key: string]: Game }
+  gamesByCode: { [key: string]: Game }
+  gamesById: { [key: string]: Game }
 
   constructor() {
-    this.games = {}
+    this.gamesByCode = {}
+    this.gamesById = {}
   }
 
   generateGame(id: string, questions: Question[]) {
@@ -17,11 +19,16 @@ class GameService {
   }
 
   registerGame(game: Game) {
-    this.games[game.code] = game
+    this.gamesByCode[game.code] = game
+    this.gamesById[game.id] = game
   }
 
-  findGame(code: string) {
-    return this.games[code]
+  findGameByCode(code: string) {
+    return this.gamesByCode[code]
+  }
+
+  findGameById(code: string) {
+    return this.gamesById[code]
   }
 }
 

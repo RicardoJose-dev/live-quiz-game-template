@@ -5,7 +5,7 @@ import { WSMessage } from "../types"
 
 export function joinPlayerToGame(ws: WebSocket, message: WSMessage) {
   const { code } = message.data
-  const game = gameService.findGame(String(code).toLowerCase())
+  const game = gameService.findGameByCode(String(code).toLowerCase())
 
   if (game === undefined) {
     throw new Error("Game not found")
@@ -18,20 +18,6 @@ export function joinPlayerToGame(ws: WebSocket, message: WSMessage) {
   }
 
   game.addPlayerToGame(player)
-  const players = game.players
-
-  for (const gamePlayer of players) {
-    gamePlayer.ws?.send(
-      JSON.stringify({
-        type: "player_joined",
-        data: {
-          playerName: player.name,
-          playerCount: players.length,
-        },
-        id: 0,
-      })
-    )
-  }
 
   return {
     type: "game_joined",
